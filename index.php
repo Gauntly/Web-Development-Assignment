@@ -7,7 +7,9 @@
 <body>
 
 <div class="container">
-    <h1>Web Development Assignment</h1>
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Status Posting System</h1>
+    </div>
 <ul class="list-group">
 <li class="list-group-item"><b>Name: </b><span class="text-info">Patrick </span> </li>
 <li class="list-group-item"><b>Student ID:</b> <span class="text-info">1243920 </span> </li>
@@ -23,12 +25,12 @@
         </div>
         </div>
 <br>
+<div class="text-center">
+<a href="poststatusform.php" class="btn btn-lg btn-success">Post Status</a>
+    <a href="searchstatusform.php" class="btn btn-lg btn-warning">Search Status</a>
+    <a href="about.php" class="btn btn-lg btn-primary">About</a>
 
-<a href="poststatusform.php" class="btn btn-success">Post Status</a>
-    <a href="searchstatusform.php" class="btn btn-warning">Search Status</a>
-    <a href="about.php" class="btn btn-primary">About</a>
-
-
+</div>
 </div>
 </body>
 </html>
