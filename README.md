@@ -30,5 +30,5 @@ ___
 ### Usage
 <p>
 <a href= https://www.apachefriends.org/download.html><img src="https://d16zszyyqlzz6z.cloudfront.net/images/xampp-logo-ac950edf.svg" width=72 height=72></a>
-<a href= getbootstrap.com><img src="http://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72></a>
+<a href= https://www.getbootstrap.com><img src="http://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72></a>
 <p> This was specifically written to be used with XAMPP but should work with similar applications with the same stack.</p>
