@@ -27,6 +27,7 @@ if (!$connection) {
  * to attempt to add it to the db.
 */
     $Status_Code = $_POST["Status_code"];
+
     if (!preg_match("/^(S\d{4})$/", $_POST["Status_code"])) {
         $ErrorCode = 1;
     } else {
@@ -44,11 +45,12 @@ if (!$connection) {
 
     }
 
-//Checks if there is anything to post, checks for null and whitespace.
-if (isset($_POST["Status"]) && (!preg_match('/\s/', $_POST["Status"]))) {
+
+if (isset($_POST["Status"])) {
     $Status = $_POST["Status"];
     $StatusFlag = true;
 } else {
+    echo "Problem possiblity";
         $ErrorCode = 2;
 }
 
@@ -59,24 +61,38 @@ if (isset($_POST["Share"])) {
     $ErrorCode = 3;
 }
 
-if (isset($_POST["Date"]) && (preg_match("/^\d{2}\/\d{2}\/\d{2}$/", $_POST["Date"]))){
+$date = ($_POST["Date"]);
+function validateDate($date, $format = 'd/m/y'){
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+if (isset($_POST["Date"]) && (validateDate($date) == true)){
     $Date = $_POST["Date"];
     $DateFlag = true;
 } else {
     $ErrorCode = 4;
 }
+/**
+ * Seems redundant but we check if any permissions exist.
+ * If true we assign the respective values to any of the values exist.
+ * The reason the checks are within the if statement are to print the error code if none of the permissions
+ * were assigned.
+ */
 if((isset($_POST["db_Like"])) || (isset($_POST["db_Comment"])) || (isset($_POST["db_Share"]))){
 
-$dbLike = ($_POST["db_Like"]);
-$dbComment = ($_POST["db_Comment"]);
-$dbShare = ($_POST["db_Share"]);
+$dbLike = isset($_POST["db_Like"]);
+$dbComment = isset($_POST["db_Comment"]);
+$dbShare = isset($_POST["db_Share"]);
 $PermissionFlag = true;
 }else{
     $ErrorCode = 5;
 }
 
 
-
+/**
+ * I used a switch statement to print errors depending on the error code.
+ * This solution seemed more appropriate than a long nested if statement within the result page.
+ */
 switch ($ErrorCode){
     case 1: $ErrorDef = "The status code you have entered does not match the requirements.</br>
     Please use a capital S followed by 4 numbers. For example: S1234.";
